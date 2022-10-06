@@ -66,10 +66,7 @@ app.use("/decks", deckRoute); // localhost:3000/users
 //     })
 // });
 
-// app.get("/",(req,res) =>{
-//     res.send("Server is run successfully");
 
-// });
 
 // app.get("/api/courses/:id",(req,res) =>{
 //     const course = COURSES.find(COURSES => COURSES.id === parseInt(req.params.id) )
@@ -105,25 +102,25 @@ app.use("/decks", deckRoute); // localhost:3000/users
 //     // console.log(course);
 // });
 // Catch 404 Errors and forward them to error handler
-app.use((req, res, next) => {
-    const err = new Error("Not Found"); // tạo ra lỗi
-    err.status = 404;
-    next(err); // chuyển lỗi
-});
+// app.use((req, res, next) => {
+//     const err = new Error("Not Found"); // tạo ra lỗi
+//     err.status = 404;
+//     next(err); // chuyển lỗi
+// });
 
 // Error handler function
 // trả lỗi cho client sẽ return
-app.use((err, req, res, next) => {
-    const error = app.get("env") === "development" ? err : {};
-    const status = err.status || 500; // lỗi không xác định
+// app.use((err, req, res, next) => {
+//     const error = app.get("env") === "development" ? err : {};
+//     const status = err.status || 500; // lỗi không xác định
 
-    // response to client
-    return res.status(status).json({
-        error: {
-            message: error.message,
-        },
-    });
-});
+//     // response to client
+//     return res.status(status).json({
+//         error: {
+//             message: error.message,
+//         },
+//     });
+// });
 
 const port = app.get("port") || 3000;
 app.listen(port, () => {
