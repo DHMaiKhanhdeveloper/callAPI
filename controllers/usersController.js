@@ -44,7 +44,8 @@ const index = async (req, res, next) => {
     return res.status(200).json({ users });
     // }catch(err) {next(err)}
 };
-//Callback
+//Promises
+
 // const newUser = (req, res, next) => {
 //     // console.log(req.body);
 //         console.log('req.body content ', req.body)
@@ -58,7 +59,7 @@ const index = async (req, res, next) => {
 //     .catch(err => next(err))
 // }
 
-//Promises
+//Callback
 // const newUser = (req, res, next) => {
 
 //         console.log('req.body content ', req.body)
@@ -158,10 +159,29 @@ const SignUp = async (req, res, next) => {
     return res.status(201).json({ SignUpAuthentication: newUsers, success: true });
 };
 const SignIn = async (req, res, next) => {
-    console.log("SignIn");
+    // console.log("SignIn Successfully");
+    // console.log("req.user ",req.user);
+    const  password_token =  encodedToken(req.user._id)
+    res.setHeader("authentication_token", password_token)
+    return res.status(201).json({ SignUpAuthentication: req.user, success: true });
 };
+// passport lấy token từ client và gửi lên server giải mã token có đúng ko ?
 const Secret = async (req, res, next) => {
     return res.status(200).json({ success: true });
+};
+
+const AuthGoogle = async (req, res, next) => {
+    // console.log("AuthGoogle ",req.user); //req.user nguyen nhan do return done(null, user);
+    const  auth_Google =  encodedToken(req.user._id)
+    res.setHeader("auth_Google", auth_Google)
+    return res.status(200).json({AuthGoogle: req.user ,  success: true });
+};
+
+const AuthFacebook = async (req, res, next) => {
+    // console.log("AuthFacebook ",req.user);
+    const  auth_Google =  encodedToken(req.user._id)
+    res.setHeader("auth_Facebook", auth_Google)
+    return res.status(200).json({AuthFacebook: req.user ,  success: true });
 };
 
 module.exports = {
@@ -175,4 +195,6 @@ module.exports = {
     SignUp,
     SignIn,
     Secret,
+    AuthGoogle,
+    AuthFacebook
 };

@@ -58,7 +58,23 @@ router
     .post(requestBody(schemas.AuthenticationSignIn), UserController.SignUp);
 router
     .route("/SignIn")
-    .post(requestBody(schemas.AuthenticationSignUp), UserController.SignIn);
+    .post(
+        requestBody(schemas.AuthenticationSignUp),
+        passport.authenticate("local", { session: false }),
+        UserController.SignIn
+    );
+
+router.post(
+    "/auth/google",
+    passport.authenticate("google-plus-token", { session: false }),
+    UserController.AuthGoogle
+); // phải config passport.js
+
+router.post(
+    "/auth/facebook/token",
+    passport.authenticate("facebook-token", { session: false }),
+    UserController.AuthFacebook
+);
 
 router
     .route("/:userID/decks")

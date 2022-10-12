@@ -30,19 +30,19 @@ app.use(helmet());
 // app.use(express.json())
 
 dotenv.config();
-// mongoose.connect((process.env.MOONGO_DB), ()=>{
-//     console.log("mongoose is connected");
-// });
+mongoose.connect((process.env.MOONGO_DB), ()=>{
+    console.log("mongoose is connected");
+});
 //mongoose.connect('mongodb://localhost:27017/myapp');
 // mongoose.connect((process.env.MOONGO_DB))
-mongoose
-    .connect("mongodb://0.0.0.0:27017/nodejsp1")
-    .then(() => console.log("✅ Connected database from mongodb."))
-    .catch((error) =>
-        console.error(
-            `❌ Connect database is failed with error which is ${error}`
-        )
-    );
+// mongoose
+//     .connect("mongodb://0.0.0.0:27017/nodejsp1")
+//     .then(() => console.log("✅ Connected database from mongodb."))
+//     .catch((error) =>
+//         console.error(
+//             `❌ Connect database is failed with error which is ${error}`
+//         )
+//     );
 
 const userRoute = require("./routes/usersRouter"); //  đi đến thư mục users trong routes
 // Routes
@@ -102,25 +102,25 @@ app.use("/decks", deckRoute); // localhost:3000/users
 //     // console.log(course);
 // });
 // Catch 404 Errors and forward them to error handler
-// app.use((req, res, next) => {
-//     const err = new Error("Not Found"); // tạo ra lỗi
-//     err.status = 404;
-//     next(err); // chuyển lỗi
-// });
+app.use((req, res, next) => {
+    const err = new Error("Not Found"); // tạo ra lỗi
+    err.status = 404;
+    next(err); // chuyển lỗi
+});
 
 // Error handler function
 // trả lỗi cho client sẽ return
-// app.use((err, req, res, next) => {
-//     const error = app.get("env") === "development" ? err : {};
-//     const status = err.status || 500; // lỗi không xác định
+app.use((err, req, res, next) => {
+    const error = app.get("env") === "development" ? err : {};
+    const status = err.status || 500; // lỗi không xác định
 
-//     // response to client
-//     return res.status(status).json({
-//         error: {
-//             message: error.message,
-//         },
-//     });
-// });
+    // response to client
+    return res.status(status).json({
+        error: {
+            message: error.message,
+        },
+    });
+});
 
 const port = app.get("port") || 3000;
 app.listen(port, () => {
