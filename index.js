@@ -30,19 +30,19 @@ app.use(helmet());
 // app.use(express.json())
 
 dotenv.config();
-mongoose.connect((process.env.MOONGO_DB), ()=>{
-    console.log("mongoose is connected");
-});
+// mongoose.connect((process.env.MOONGO_DB), ()=>{
+//     console.log("mongoose is connected");
+// });
 //mongoose.connect('mongodb://localhost:27017/myapp');
 // mongoose.connect((process.env.MOONGO_DB))
-// mongoose
-//     .connect("mongodb://0.0.0.0:27017/nodejsp1")
-//     .then(() => console.log("✅ Connected database from mongodb."))
-//     .catch((error) =>
-//         console.error(
-//             `❌ Connect database is failed with error which is ${error}`
-//         )
-//     );
+mongoose
+    .connect("mongodb://0.0.0.0:27017/nodejsp1")
+    .then(() => console.log("✅ Connected database from mongodb."))
+    .catch((error) =>
+        console.error(
+            `❌ Connect database is failed with error which is ${error}`
+        )
+    );
 
 const userRoute = require("./routes/usersRouter"); //  đi đến thư mục users trong routes
 // Routes

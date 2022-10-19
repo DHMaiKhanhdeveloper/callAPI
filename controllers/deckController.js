@@ -55,54 +55,7 @@ const deleteDeck = async (req, res, next) => {
     return res.status(200).json({ success: true });
 };
 
-//  const getUser = async (req, res, next) => {
 
-//          const {userID} = req.params
-//          const user = await UsersModel.findById(userID)
-//          return res.status(200).json({user})
-
-//  }
-
-//  const replaceUser = async (req, res, next) => {
-
-//      const {userID} = req.params
-//      const  newUser = req.body
-//      const user = await UsersModel.findByIdAndUpdate(userID,newUser)
-//      return res.status(200).json({users: user })
-
-//  }
-
-//  const updateUser = async (req, res, next) => {
-
-//      const {userID} = req.params
-//      const  newUser = req.body
-//      const user = await UsersModel.findByIdAndUpdate(userID,newUser)
-//      return res.status(200).json({users: user })
-
-//  }
-
-//  const getUserDeck = async (req, res, next) => {
-
-//      const {userID} = req.params
-//      const user = await UsersModel.findById(userID).populate("decks")
-//      return res.status(200).json({decks: user.decks })
-
-//  }
-
-//  const newUserDeck = async (req, res, next) => {
-
-//      const {userID} = req.params
-//      const  newDeck = new DeckSModel(req.body)
-//      await newDeck.save()
-//      const user = await UsersModel.findById(userID)
-//      newDeck.owner = user
-
-//      // const  newUser = new UsersModel(req.body)
-//      user.decks.push(newDeck._id) //user.decks.push(newDeck)
-//      await user.save()
-//      return res.status(200).json({newDecks: newDeck })
-
-//  }
 
 module.exports = {
     index,
