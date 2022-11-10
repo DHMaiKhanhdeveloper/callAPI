@@ -167,7 +167,8 @@ const SignIn = async (req, res, next) => {
 };
 // passport lấy token từ client và gửi lên server giải mã token có đúng ko ?
 const Secret = async (req, res, next) => {
-    return res.status(200).json({ success: true });
+    const users = await UsersModel.find({});
+    return res.status(200).json({ userHeader: req.user , success: true  });
 };
 
 const AuthGoogle = async (req, res, next) => {

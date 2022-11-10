@@ -47,7 +47,7 @@ router
         UserController.updateUser
     );
 router
-    .route("/secret/secrets")
+    .route("/secret/Secrets")
     .get(
         passport.authenticate("jwt", { session: false }),
         UserController.Secret

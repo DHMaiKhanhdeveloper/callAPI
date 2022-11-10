@@ -5,7 +5,7 @@ const requestParam = (schema, name) => {
         console.log(req.params[name]);
         const ValidateResult = schema.validate({ idParam: req.params[name] });
         console.log("ValidateResult", ValidateResult);
-        console.log("req.params", req.params);
+        console.log("req.params[name]", req.params[name]);
 
         if (ValidateResult.error) {
             res.status(400).json(ValidateResult.error);

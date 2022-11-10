@@ -28,6 +28,41 @@ app.use(morgan("dev")); //  run với tốc độ nhanh hơn
 app.use(bodyParser.json());
 app.use(helmet());
 // app.use(express.json())
+const username = "khanhdohoangmai549117@gmail.com";
+const password = "7B63c$s9czK_N3u";
+const cluster = "Cluster0";
+// const dbname = "EducationApp";
+
+// mongoose.connect(
+//   // `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${dbname}?retryWrites=true&w=majority`, 
+//   // (process.env.MOONGO_DB),
+//   `mongodb+srv://khanhdohoangmai549117@gmail.com:7B63c$s9czK_N3u@Cluster0.mongodb.net/?retryWrites=true&w=majority`,
+//   // {
+//   //   useNewUrlParser: true,
+//   //   useFindAndModify: false,
+//   //   useUnifiedTopology: true
+//   // }
+
+//   ()=>{
+//         console.log("mongoose is connected");
+//     }
+// );
+
+// async () => {
+//   try {
+//     await mongoose.connect(`mongodb+srv://${username}:${password}@${cluster}.k4qqq.mongodb.net/${dbname}?retryWrites=true&w=majority`);
+
+//     console.log('MongoDb connected');
+//   } catch (error) {
+//     console.log(error);
+//     process.exit(1);
+//   }
+// };
+// const db = mongoose.connection;
+// db.on("error", console.error.bind(console, "connection error: "));
+// db.once("open", function () {
+//   console.log("Connected successfully");
+// });
 
 dotenv.config();
 // mongoose.connect((process.env.MOONGO_DB), ()=>{
@@ -122,7 +157,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-const port = app.get("port") || 3000;
+const port = app.get("port") || 5000;
 app.listen(port, () => {
     console.log(`Server is running ....${port}`);
 });
